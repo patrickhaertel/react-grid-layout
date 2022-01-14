@@ -206,6 +206,12 @@ export default class ReactGridLayout extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
+    if (prevProps.isDroppable === true && this.props.isDroppable === false) {
+      console.log("component was droppable and now is not")
+      
+      this.removeDroppingPlaceholder();
+    };
+    
     if (!this.state.activeDrag) {
       const newLayout = this.state.layout;
       const oldLayout = prevState.layout;
